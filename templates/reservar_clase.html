@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Reservar Clase{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Reservar Clase</h2>
+
+    <div class="card shadow p-4">
+        <form method="POST">
+            <div class="mb-3">
+                <label for="id_socio" class="form-label">Socio:</label>
+                <select name="id_socio" id="id_socio" class="form-control" required>
+                    <option value="">Seleccione un socio</option>
+                    {% for socio in socios %}
+                        <option value="{{ socio.id_socio }}">
+                            {{ socio.nombre }} {{ socio.apellido }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="id_clase" class="form-label">Clase:</label>
+                <select name="id_clase" id="id_clase" class="form-control" required>
+                    <option value="">Seleccione una clase</option>
+                    {% for clase in clases %}
+                        <option value="{{ clase.id_clase }}">
+                            {{ clase.nombre_clase }} 
+                            {% if clase.descripcion %} - {{ clase.descripcion }}{% endif %}
+                            (Cupo: {{ clase.cupo }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Reservar Clase</button>
+                <a href="{{ url_for('reservas_lista') }}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="mt-4 text-center">
+            <a href="{{ url_for('socios_lista') }}" class="btn btn-outline-light btn-sm me-2">Socios</a>
+            <a href="{{ url_for('planes_lista') }}" class="btn btn-outline-light btn-sm me-2">Planes</a>
+            <a href="{{ url_for('pagos_lista') }}" class="btn btn-outline-light btn-sm me-2">Pagos</a>
+            <a href="{{ url_for('clases_lista') }}" class="btn btn-outline-light btn-sm">Clases</a>
+            <a href="{{ url_for('reservas_lista') }}" class="btn btn-outline-light btn-sm">Reservas</a>
+</div>
+{% endblock %}
