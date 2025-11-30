@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card p-4 shadow-lg">
+        <h2 class="mb-4 text-center">Nuevo Socio</h2>
+
+        <!-- Navegación -->
+        <div class="mb-3 text-end">
+            <a href="{{ url_for('socios_lista') }}" class="btn btn-outline-light btn-sm">
+                <i class="bi bi-arrow-left-circle"></i> Lista de Socios
+            </a>
+        </div>
+
+        <form action="{{ url_for('socios_agregar') }}" method="post">
+            
+            <!-- Datos personales -->
+            <h4 class="mb-3">Datos Personales</h4>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="apellido" class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                </div>
+            </div>
+
+            <!-- Contacto -->
+            <h4 class="mb-3">Contacto</h4>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Correo:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                </div>
+            </div>
+
+            <!-- Registro adicional -->
+            <h4 class="mb-3">Registro</h4>
+            <!-- Aquí puedes agregar más campos si lo necesitas -->
+
+            <!-- Botones -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success me-2">
+                    <i class="bi bi-check-circle"></i> Registrar
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- Iconos de Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+{% endblock %}

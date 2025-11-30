@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Editar Clase</h2>
+
+<div class="card shadow p-4">
+
+    <form method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Nombre de la Clase:</label>
+            <input type="text" name="nombre_clase" class="form-control" value="{{ clase.nombre_clase }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <textarea name="descripcion" class="form-control" required>{{ clase.descripcion }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Cupo:</label>
+            <input type="number" name="cupo" class="form-control" value="{{ clase.cupo }}" required>
+        </div>
+
+        <button class="btn btn-primary">Guardar Cambios</button>
+        <a href="{{ url_for('clases_lista') }}" class="btn btn-secondary">Cancelar</a>
+
+    </form>
+
+</div>
+
+{% endblock %}
