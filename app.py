@@ -1,9 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_mysqldb import MySQL
-import MySQLdb.cursors
-from functools import wraps
-from werkzeug.security import check_password_hash
-from datetime import date, timedelta
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 app.secret_key = "miClaveSegura"
